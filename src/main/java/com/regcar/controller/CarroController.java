@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/produto")
+@RequestMapping(value = "/carro")
 public class CarroController {
 
    @Autowired
@@ -30,16 +30,9 @@ public class CarroController {
    @PostMapping
    private Carro save(@RequestBody Carro carro) {
 
-		//validar se cliente existe ou não
 		Login login = loginComponent.buscarId(carro.getLogin().getId());
-		System.out.println(login);
-		
-		if (login == null) {
-       	    System.out.println("está vazio classe login");
-		}
-		else {
-       	System.out.println("tem classe login");
-        return carroComponent.salvar(carro, login);
+		if (login != null) {
+            return carroComponent.salvar(carro, login);
 		}
 		return null;
    }
@@ -52,7 +45,6 @@ public class CarroController {
    @DeleteMapping(value = "/nome/{nome}/{idLogin}")
    private void delete(@PathVariable(value = "nome") String nome, @PathVariable(value = "idLogin" ) String id) {
    	    Login login = loginComponent.buscarId(id);
-  		System.out.println(login);
 
        carroComponent.delete(nome, login);
    }
@@ -61,13 +53,7 @@ public class CarroController {
    @GetMapping(value = "/produtos/{idLogin}")
    private List<Carro> findByLogin(@PathVariable(value = "idLogin") String idLogin) {
 
-		//validar se cliente existe ou não
 		Login login = loginComponent.buscarId(idLogin);
-		System.out.println(login);
-		
-		if (login == null) {
-      	    System.out.println("está vazio classe login");
-		}
 	   
        return carroComponent.findByLogin(login);
    }
@@ -75,7 +61,6 @@ public class CarroController {
    @GetMapping(value = "/nome/{nome}/{idLogin}")
    private Carro busca(@PathVariable(value = "nome") String nome, @PathVariable(value = "idLogin" ) String id) {
    	    Login login = loginComponent.buscarId(id);
-  		System.out.println(login);
 
         return carroComponent.busca(nome, login);
    }

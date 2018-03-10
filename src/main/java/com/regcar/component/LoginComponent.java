@@ -10,14 +10,13 @@ import com.regcar.model.Login;
 
 @Component
 public class LoginComponent {
-
-
+    
 	@Autowired
     LoginRepository loginRepository;
 	
-	public Login salvar(Login login) {
-        List<Login> logins = loginRepository.findByUsuario(login.getUsuario());
-        if (logins.size() > 0) {
+	public Login salvar(Login loginSave) {
+        List<Login> login = loginRepository.findByUsuario(loginSave.getUsuario());
+        if (login.size() > 0) {
             return null;
         }
         return loginRepository.save(login);
@@ -31,45 +30,42 @@ public class LoginComponent {
         loginRepository.deleteAll();
     }
     
-    public void delete(String usuario) {
+    public void delete(String user) {
     	
-    	List<Login> logins = loginRepository.findByUsuario(usuario);
-    	if(!logins.isEmpty())
-    		loginRepository.delete(logins.get(0));
+    	List<Login> login = loginRepository.findByUsuario(user);
+    	if(!login.isEmpty())
+    		loginRepository.delete(login.get(0));
     }
   
-    public Login buscarUsuario(String usuario) {
-        List<Login> logins = loginRepository.findByUsuario(usuario);
-        if (logins.isEmpty()) {
+    public Login buscarUsuario(String user) {
+        List<Login> login = loginRepository.findByUsuario(user);
+        if (login.isEmpty()) {
             return null;
         } else {
-            return logins.get(0);
+            return login.get(0);
         }
     }
     
     public Login buscarId(String id) {
-    	List<Login> logins = loginRepository.findById(id);
+    	List<Login> login = loginRepository.findById(id);
 
-    	if (logins.isEmpty()) {
+    	if (login.isEmpty()) {
             return null;
         } else {
-            return logins.get(0);
+            return login.get(0);
         }
     }
     
     
-    public Login validarSenha(String usuario, String senha) {
-    	List<Login> logins = loginRepository.findByUsuario(usuario);
-    	if (logins.isEmpty()) {
+    public Login validarSenha(String user, String senha) {
+    	List<Login> login = loginRepository.findByUsuario(user);
+    	if (login.isEmpty()) {
     		return null;
     	} else {
-    		if (logins.get(0).getSenha().equals(senha)) {
-    			return logins.get(0);
+    		if (login.get(0).getSenha().equals(senha)) {
+    			return login.get(0);
     		} ;
     		return null;
-    	}	
-
+    	}
     }
-
-    
 }

@@ -17,14 +17,14 @@ public class CarroComponent {
     CarroRepository carroRepository;
 	
 	public Carro salvar(Carro carro, Login login) {
-        List<Carro> produtosLogin = carroRepository.findByLogin(login);
+        List<Carro> carroList = carroRepository.findByLogin(login);
         
-        if (produtosLogin.size() > 0) {
-           for (int i=0; i < produtosLogin.size();i++) {
+        if (carroList.size() > 0) {
+           for (int i=0; i < carroList.size();i++) {
 
-              if (produtosLogin.get(i).getNome().equals(carro.getNome())){
-                  List<Carro> carros = carroRepository.findById(produtosLogin.get(i).getId());
-            	  carro.setId(produtosLogin.get(i).getId());
+              if (carroList.get(i).getNome().equals(carro.getNome())){
+                  List<Carro> carros = carroRepository.findById(carroList.get(i).getId());
+            	  carro.setId(carroList.get(i).getId());
                   return null;
               }
         	
@@ -49,16 +49,12 @@ public class CarroComponent {
     
     public void delete(String nome, Login login) {
     	
-        List<Carro> produtosLogin = carroRepository.findByLogin(login);
+        List<Carro> carrosList = carroRepository.findByLogin(login);
         
-        if (produtosLogin.size() > 0) {
-           for (int i=0; i < produtosLogin.size();i++) {
-        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
-        	          	  
-              if (produtosLogin.get(i).getNome().equals(nome)){
-            	  System.out.println("Produtos sao iguais");
-            	  carroRepository.delete(produtosLogin.get(i));
-
+        if (carrosList.size() > 0) {
+           for (int i=0; i < carrosList.size();i++) {
+              if (carrosList.get(i).getNome().equals(nome)){
+            	  carroRepository.delete(carrosList.get(i));
               }
         	
            }
@@ -67,15 +63,12 @@ public class CarroComponent {
 
     public Carro busca(String nome, Login login) {
     	
-        List<Carro> produtosLogin = carroRepository.findByLogin(login);
+        List<Carro> carroList = carroRepository.findByLogin(login);
         
-        if (produtosLogin.size() > 0) {
-           for (int i=0; i < produtosLogin.size();i++) {
-        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
-        	          	  
-              if (produtosLogin.get(i).getNome().equals(nome)){
-            	  System.out.println("Produtos sao iguais");
-            	  return produtosLogin.get(i);
+        if (carroList.size() > 0) {
+           for (int i=0; i < carroList.size();i++) {
+              if (carroList.get(i).getNome().equals(nome)){
+            	  return carroList.get(i);
               }
         	
            }
@@ -85,18 +78,13 @@ public class CarroComponent {
 
     
     public Carro update(Carro carro) {
-        List<Carro> produtosLogin = carroRepository.findByLogin(carro.getLogin());
+        List<Carro> carroList = carroRepository.findByLogin(carro.getLogin());
         
-        if (produtosLogin.size() > 0) {
-           for (int i=0; i < produtosLogin.size();i++) {
-        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
-        	  System.out.println("carro" + carro.getNome());
-        	          	  
-              if (produtosLogin.get(i).getNome().equals(carro.getNome())){
-            	  System.out.println("Produtos sao iguais");
-                  List<Carro> carros = carroRepository.findById(produtosLogin.get(i).getId());
-            	  carro.setId(produtosLogin.get(i).getId());
-
+        if (carroList.size() > 0) {
+           for (int i=0; i < carroList.size();i++) {
+              if (carroList.get(i).getNome().equals(carro.getNome())){
+                  List<Carro> carros = carroRepository.findById(carroList.get(i).getId());
+            	  carro.setId(carroList.get(i).getId());
               }
         	
            }
