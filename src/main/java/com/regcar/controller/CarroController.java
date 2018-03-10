@@ -50,7 +50,7 @@ public class CarroController {
    }
    
   
-   @GetMapping(value = "/produtos/{idLogin}")
+   @GetMapping(value = "/carros/{idLogin}")
    private List<Carro> findByLogin(@PathVariable(value = "idLogin") String idLogin) {
 
 		Login login = loginComponent.buscarId(idLogin);
