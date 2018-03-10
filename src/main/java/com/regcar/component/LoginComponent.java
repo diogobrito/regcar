@@ -19,7 +19,7 @@ public class LoginComponent {
         if (login.size() > 0) {
             return null;
         }
-        return loginRepository.save(login);
+        return loginRepository.save(loginSave);
     }
 	
     public List<Login> findAll() {
