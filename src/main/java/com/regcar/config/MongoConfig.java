@@ -1,4 +1,4 @@
-package br.com.fiap.listacompra.config;
+package com.regcar.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;

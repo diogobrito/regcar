@@ -1,16 +1,16 @@
-package br.com.fiap.listacompra.model;
+package com.regcar.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Produto {
+public class Carro {
 	
 	@Id
     private String id;
 	private String nome;
-    private String qtde;
+    private String placa;
     
     @DBRef
     private Login login;
@@ -33,11 +33,11 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getQtde() {
-		return qtde;
+	public String getPlaca() {
+		return placa;
 	}
-	public void setQtde(String qtde) {
-		this.qtde = qtde;
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
      
     

@@ -1,20 +1,18 @@
-package br.com.fiap.listacompra.component;
+package com.regcar.component;
 
 import java.util.List;
 
+import com.regcar.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.fiap.listacompra.model.Produto;
-import br.com.fiap.listacompra.model.Usuario;
-import br.com.fiap.listacompra.repository.ProdutoRepository;
-import br.com.fiap.listacompra.repository.UsuarioRepository;
+import com.regcar.model.Usuario;
 
 @Component
 public class UsuarioComponent {
 
 	@Autowired
-	UsuarioRepository usuarioRepository;
+    UsuarioRepository usuarioRepository;
 	
 	public Usuario salvar(Usuario usuario) {
         List<Usuario> usuarios = usuarioRepository.findByUsuario(usuario.getUsuario());
@@ -51,12 +49,12 @@ public class UsuarioComponent {
     public int validarSenha(String usuario, String senha) {
     	List<Usuario> usuarios = usuarioRepository.findByUsuario(usuario);
     	if (usuarios.isEmpty()) {
-    		return 1; //Codigo de Erro para quando o Usuario não existe  
+    		return 1;
     	} else {
     		if (usuarios.get(0).getSenha().equals(senha)) {
-    			return 0; //Senha validada com sucesso
+    			return 0;
     		} ;
-    		return 2; //Codigo de Erro para quando a Senha está incorreta;
+    		return 2;
     	}	
     	
     }	

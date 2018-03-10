@@ -1,12 +1,12 @@
-package br.com.fiap.listacompra;
+package com.regcar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ListacompraApplication {
+public class RegistroCarrosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ListacompraApplication.class, args);
+		SpringApplication.run(RegistroCarrosApplication.class, args);
 	}
 }

@@ -1,4 +1,4 @@
-package br.com.fiap.listacompra.controller;
+package com.regcar.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.listacompra.component.LoginComponent;
-import br.com.fiap.listacompra.model.Login;
+import com.regcar.component.LoginComponent;
+import com.regcar.model.Login;
 
 @RestController
 @CrossOrigin
@@ -27,9 +27,9 @@ public class LoginController {
 	       return loginComponent.salvar(login);
 	   }
 
-	   @GetMapping
+	   @GetMapping(value = "usuario/listarTodos")
 	   private List<Login> findAll() {
-	       return loginComponent.findAll();
+	   	return loginComponent.findAll();
 	   }
 	   
 	   @GetMapping(value = "/usuario/{usuario}")

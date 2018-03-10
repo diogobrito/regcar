@@ -1,4 +1,4 @@
-package br.com.fiap.listacompra.model;
+package com.regcar.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,7 +8,6 @@ public class Login {
 
 	@Id
 	private String id;
-	
 	private String usuario;
 	private String senha;
 	private String nome;

@@ -1,19 +1,19 @@
-package br.com.fiap.listacompra.component;
+package com.regcar.component;
 
 import java.util.List;
 
+import com.regcar.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.fiap.listacompra.model.Login;
-import br.com.fiap.listacompra.repository.LoginRepository;
+import com.regcar.model.Login;
 
 @Component
 public class LoginComponent {
 
 
 	@Autowired
-	LoginRepository loginRepository;
+    LoginRepository loginRepository;
 	
 	public Login salvar(Login login) {
         List<Login> logins = loginRepository.findByUsuario(login.getUsuario());
@@ -48,15 +48,11 @@ public class LoginComponent {
     }
     
     public Login buscarId(String id) {
-    	System.out.println("entrou buscarId");
     	List<Login> logins = loginRepository.findById(id);
-    	System.out.println("entrou findbyid");
 
     	if (logins.isEmpty()) {
-        	System.out.println("está vazio");
             return null;
         } else {
-        	System.out.println("acho login");
             return logins.get(0);
         }
     }
@@ -65,12 +61,12 @@ public class LoginComponent {
     public Login validarSenha(String usuario, String senha) {
     	List<Login> logins = loginRepository.findByUsuario(usuario);
     	if (logins.isEmpty()) {
-    		return null; //Codigo de Erro para quando o Usuario não existe  
+    		return null;
     	} else {
     		if (logins.get(0).getSenha().equals(senha)) {
-    			return logins.get(0); //Senha validada com sucesso
+    			return logins.get(0);
     		} ;
-    		return null; //Codigo de Erro para quando a Senha está incorreta;
+    		return null;
     	}	
 
     }
